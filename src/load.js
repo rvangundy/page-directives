@@ -18,6 +18,8 @@ function load(/* arguments */) {
 	}
 
 	return function(ctx, next) {
+        if (parent.element) { parent = parent.element; }
+        if (child.element) { child = child.element; }
 		parent.appendChild(child);
 		next();
 	};
