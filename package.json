@@ -20,5 +20,8 @@
   "repository": {
     "type" : "git",
     "url"  : "https://github.com/rvangundy/page-directives.git"
+  },
+  "dependencies": {
+    "animate": "git://github.com/rvangundy/animate"
   }
 }

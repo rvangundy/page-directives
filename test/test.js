@@ -37,4 +37,17 @@ describe('Directives', function() {
             page('/');
         });
     });
+
+    describe('fade()', function() {
+        var div = document.createElement('div');
+
+        div.innerHTML = 'test';
+
+        it('should transition opacity of element to .5 in 500ms', function() {
+            page('/', dir.fade(div,[0,.5], 500), function() {
+                assert.equal(div.style.opacity, .5);
+            });
+            page('/');
+        });
+    });
 });
