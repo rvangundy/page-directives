@@ -8,14 +8,12 @@ var animate = require('animate');
  * @param {Function} next Allows the next directive to proceed
  */
 function fade(/* arguments */) {
-    var child, direction, speed, history;
+    var child, direction, speed;
     var fadeVars = [];
-    
+
     child     = arguments[0];
     direction = arguments[1];
     speed     = arguments[2];
-    history   = arguments[3];
-    console.log(history);
 
     if(direction==='in') {
         fadeVars = [0,1];
@@ -33,13 +31,13 @@ function fade(/* arguments */) {
 
     function opacity(element, startPos, stopPos) {
         return function(progress) {
-            if(stopPos==0){
+            if(stopPos === 0){
                 element.style.opacity = (1 - progress);
             }
             else {
                 element.style.opacity = progress * (stopPos - startPos);
-            }        
-        }
+            }
+        };
     }
 
     return function(ctx, next) {
@@ -49,7 +47,7 @@ function fade(/* arguments */) {
             opacity(child, fadeVars[0], fadeVars[1]),
             speed,
             animate.easeInOut,
-            function() { next() }
+            function() { next(); }
         );
     };
 }
